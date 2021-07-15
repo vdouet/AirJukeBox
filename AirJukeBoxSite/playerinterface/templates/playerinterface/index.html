@@ -1,0 +1,131 @@
+<!--Original HTML code: Copyright (c) 2021 by Arefeh hatami (https://codepen.io/arefeh_htmi/pen/mdPYZKJ)
+    Modified by Victor Douet (victor.douet@gmail.com) for AirJukeBox.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'playerinterface/style.css' %}">
+    <script src="{% static "playerinterface/js/jquery-3.6.0.min.js" %}"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <legend><h1>{{ settings.setting_text }}</h1></legend>
+
+    <br>
+
+    <h4>{{ settings.song_text }}</h4>
+    <form id="form_settings" action="{% url 'playerinterface:change_play' settings.id %}" method="post">
+      {% csrf_token %}
+      Currently playing: {{ settings.song_choice }}
+      <div class="input-group"> <br>
+        <select name="song" id="song">
+          {% for song in songs_list %}
+          <option value="{{song}}">{{song}}</option>
+          {% endfor %}
+        </select>
+
+        <br><br>
+
+          <input class="four-radio" type="radio" name="toggle_play" id="Play" value="Play" onchange="submit_form('form_settings')" {% if settings.play_toggle %} checked {% endif %}/>
+          <label class="four-radio" id="PlayLabel" for="Play">Play</label>
+          <input class="four-radio" type="radio" name="toggle_play" id="Stop" value="Stop" onchange="submit_form('form_settings')" {% if not settings.play_toggle %} checked {% endif %}/>
+          <label class="four-radio" for="Stop">Stop</label>
+          </form>
+
+          <form id="form_loop" action="{% url 'playerinterface:change_loop' settings.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="toggle_loop" value="False" />
+            <input type="checkbox" name="toggle_loop" value="True" id="toggle_loop" onchange="submit_form('form_loop')" {% if settings.loop_toggle %} checked {% endif %}>
+            <label class="four-radio" for="toggle_loop">Loop</label>
+          </form>
+
+          <form id="form_random" action="{% url 'playerinterface:change_random' settings.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="toggle_random" value="False" />
+            <input type="checkbox" name="toggle_random" value="True" id="toggle_random" onchange="submit_form('form_random')" {% if settings.random_toggle %} checked {% endif %}>
+            <label class="four-radio" for="toggle_random">random</label>
+          </form>
+      </div>
+
+    <br>
+    <hr class="solid">
+
+    <form id="form_vol" action="{% url 'playerinterface:change_volume' settings.id %}" method="post">
+      {% csrf_token %}
+      <h4>{{ settings.volume_text }}</h4>
+      <div class="input-group">
+        Selected volume: <output>{{ settings.volume_choice }}</output>%
+        <input type="range" id="vol_choice" name="volume" min="0" max="100" value="{{ settings.volume_choice }}" oninput="this.previousElementSibling.value = this.value" onchange="submit_form('form_vol')"/>
+      </div>
+    </form>
+
+    <br>
+    <hr class="solid">
+
+    <form id="form_timer" action="{% url 'playerinterface:change_timer' settings.id %}" method="post">
+      {% csrf_token %}
+      <h4>{{ settings.timer_text }}</h4>
+      <div class="input-group">
+        Automatic cutoff: <output>{{ settings.timer_choice }}</output> minutes.
+        <input type="range" id="timer_choice" name="timer" min="0" max="500" value="{{ settings.timer_choice }}" onchange="submit_form('form_timer')" oninput="this.previousElementSibling.value = this.value" {% if not settings.timer_toggle %} disabled=true {% endif %}>
+        <input type="radio" name="toggle_timer" id="enable_timer" value="True" onclick="enable_timer_range()" onchange="submit_form('form_timer')" {% if settings.timer_toggle %} checked {% endif %} />
+        <label for="enable_timer">Enable</label>
+        <input type="radio" name="toggle_timer" id="disable_timer" value="False" onclick="disable_timer_range()" onchange="submit_form('form_timer')" {% if not settings.timer_toggle %} checked {% endif %}/>
+        <label for="disable_timer">Disable</label>
+        <script>
+          function disable_timer_range() {
+            document.getElementById("timer_choice").disabled=true;
+          }
+
+          function enable_timer_range() {
+            document.getElementById("timer_choice").disabled=false;
+          }
+        </script>
+      </div>
+    </form>
+
+    <br><br>
+    <hr class="solid">
+
+    <form action="{% url 'playerinterface:download_youtube' %}" method="post">
+        <h4>Add song from Youtube</h4>
+        <div class="input-group">
+            {% csrf_token %}
+            <input type="url" placeholder="Ex: https://www.youtube.com/watch?v=juk0D2itzXo", name="youtube_url"/>
+        </div>
+        <input type="submit" value="Download song">
+    </form>
+
+    <form action="{% url 'playerinterface:upload_song' %}" method="post" enctype="multipart/form-data">
+        <h4>Upload song</h4>
+        <div class="input-group">
+            {% csrf_token %}
+            <input type="file" name="song_to_upload"/>
+        </div>
+        <input type="submit" value="Upload song">
+    </form>
+
+    <form action="{% url 'playerinterface:delete_song' %}" method="post">
+        <h4>Delete song</h4>
+        <div class="input-group">
+            {% csrf_token %}
+            <select name="song" id="song">
+                {% for song in songs_list %}
+                  <option value="{{song}}">{{song}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input type="submit" value="Delete song">
+    </form>
+
+  </div>
+  <script>
+    function submit_form(form) {
+        document.getElementById(form).submit();
+    }
+</script>
+</body>
+</html>

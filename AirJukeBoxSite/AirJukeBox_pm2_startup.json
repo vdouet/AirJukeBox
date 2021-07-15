@@ -1,0 +1,14 @@
+{
+    "apps":
+       [{
+         "name": "AirJukeBox_auto_startup",
+         "script": "manage.py",
+         "args": ["runserver", "0:8000"],
+         "exec_mode": "fork",
+         "instances": "1",
+         "wait_ready": true,
+         "autorestart": false,
+         "max_restarts": 5,
+         "interpreter" : "python3"
+       }]
+ }
