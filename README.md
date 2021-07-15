@@ -86,7 +86,8 @@ If you want to access the AirJukeBox's web interface from the main device you ca
 
 <p align="center">
 <img
-src="/vdouet/AirJukeBox/img/AirJukeBox_GUI_1.png"
+src="https://github.com/vdouet/AirJukeBox/blob/main/img/AirJukeBox_GUI_1.png"
+src="https://github.com/vdouet/AirJukeBox/blob/main/img/AirJukeBox_GUI_2.png"
 alt="GUI 1" title="GUI 1"/>
 </p>
 
