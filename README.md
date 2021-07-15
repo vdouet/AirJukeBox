@@ -67,11 +67,11 @@ ffmpeg or ffprobe should be installed (for YouTube-dl .ogg conversion):
 
 ## VI. How to use
 
-1) Download or clone this repository
-2) Install the requirements using `pip3 install -r requirements.txt`
+1) Download or clone this repository.
+2) Install the requirements using `pip3 install -r requirements.txt`.
 
-- To automatically launch AirJukeBox on startup see "IX. Automatically start AirJukeBox on startup"
-- You can manually start AirJukeBox using: `python3 manage.py runserver 0:8000`
+- To automatically launch AirJukeBox on startup see "IX. Automatically start AirJukeBox on startup".
+- You can manually start AirJukeBox using: `python3 manage.py runserver 0:8000`.
 
 
 ## VII. Web interface
@@ -80,7 +80,7 @@ AirJukeBox's web interface can be accessed using your device's IP on your local 
 
 Ex: `192.168.1.145:8000/playerinterface`
 
-If you want to access the AirJukeBox's web interface from the main device you can use: `localhost:8000/playerinterface`
+If you want to access the AirJukeBox's web interface from the main device you can use: `localhost:8000/playerinterface`.
 
 ## VIII. User interface
 
@@ -107,7 +107,7 @@ Open a terminal and copy/paste the following commands:
 2) Type: `pm2 startup`
 3) Copy and paste the given command.
 4) cd to AirJukeBox/AirJukeBoxSite and type: `pm2 start AirJukeBox_pm2_startup.json`
-5) `pm2 save`
+5) Type: `pm2 save`
 
 The Django server should now launch automatically each time the Raspberry Pi starts.
 On Linux and MacOS `pm2` should work in a similar way, not sure about windows.
