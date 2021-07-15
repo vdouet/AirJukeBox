@@ -84,6 +84,12 @@ If you want to access the AirJukeBox's web interface from the main device you ca
 
 ## VIII. User interface
 
+<p align="center">
+<img
+src="/vdouet/AirJukeBox/img/AirJukeBox_GUI_1.png"
+alt="GUI 1" title="GUI 1"/>
+</p>
+
 AirJukeBox is a simple audio player and the user can access the following functionalities using the user interface:
 
 - Play: Play the selected song, it will play all songs in the directory in order and the stop.
