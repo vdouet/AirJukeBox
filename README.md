@@ -2,8 +2,8 @@
 
 ## I. Introduction
 
-This project was originaly designed for personal use to run on a Raspberry Pi as a background music
-player for sleeping or relaxing controllable via a web interface. Eventually support for Linux,
+This project was originally designed for personal use to run on a Raspberry Pi as a background music
+player for sleeping or relaxing controllable via a web interface. Support for Linux,
 MacOS and Windows was added for people who want to run AirJukeBox on a computer.
 
 AirJukeBox is a basic music player made in Python controllable using a web
@@ -12,7 +12,7 @@ Raspberry Pi connected to a stereo system (or a speaker) and to the local WiFi n
 choose which sound to play remotely (e.g. from a bed) using a web
 interface accessible from anywhere in the house from the user's phone, tablet or laptop.
 The main requirement was to not use the user's main device as the music player,
-not use bluetooth, and the music player should be controllable from multiple devices.
+not use Bluetooth, and the music player should be controllable from multiple devices.
 
 
 ## II. Functionalities
@@ -23,10 +23,10 @@ AirJukeBox's remote functionalities include:
 - Setting a cutoff timer.
 - Basic music player functionnalities (play, pause, stop, loop, random).
 - Uploading music from the web page to the device's `Sounds/` folder to be used.
-- Downloading music from Youtube to the `Sounds/` folder to be used.
+- Downloading music from YouTube to the `Sounds/` folder to be used.
 - Deleting music from the `Sounds/` folder.
 
-AirJukeBox was not originally designed to be a fully-fledged music player. But feel free
+AirJukeBox was not originally designed to be a full-fledged music player. But feel free
 to ask for (or add) new functionnalities if you want.
 
 
@@ -47,7 +47,7 @@ AirJukeBox was tested with:
 - MacOS Big Sur 11.0.1
 - Windows 10
 
-Ubuntu was not tested but should work. Other distributions should work fine but amixer might need to be installed first.
+Ubuntu was not tested but should work. Other distributions should work fine, but amixer might need to be installed first.
 
 
 ## V. Requirements
@@ -58,7 +58,7 @@ AirJukeBox's requirements are:
 - Django >= 3.2.5 (Tested with version 3.2.5)
 - Youtube_dl >= 2021.6.6 (tested with version 2021.6.6). Install using pip!
 
-ffmpeg or ffprobe should be installed (for youtube-dl .ogg conversion):
+ffmpeg or ffprobe should be installed (for YouTube-dl .ogg conversion):
 - MacOS: `brew install ffmpeg`
 - Ubuntu: `sudo apt-get install ffmpeg`
 - Windows: https://ffmpeg.org/download.html
@@ -80,6 +80,8 @@ AirJukeBox's web interface can be accessed using your device's IP on your local 
 
 Ex: `192.168.1.145:8000/playerinterface`
 
+If you want to access the AirJukeBox's web interface from the main device you can use: `localhost:8000/playerinterface`
+
 ## VIII. User interface
 
 AirJukeBox is a simple audio player and the user can access the following functionalities using the user interface:
@@ -90,8 +92,8 @@ AirJukeBox is a simple audio player and the user can access the following functi
 - Random: Play all songs in the directory in random order. Can be combined with "Loop".
 - Volume: Control the main device's sound volume.
 - Cutoff timer: Automatically stop the audio player after the selected number of minutes. Can be enabled or disabled.
-- Add song from Youtube: Download the audio from the video provided with the youtube link and convert it to .OGG.
-- Upload song: Upload a song from the user's devide to the AirJukeBox 'Songs/' directory.
+- Add song from YouTube: Download the audio from the video provided with the YouTube link and convert it to .OGG.
+- Upload song: Upload a song from the user's device to the AirJukeBox 'Songs/' directory.
 - Delete song: Delete a song from the 'Songs/' directory.
 
 
@@ -118,8 +120,8 @@ Note: Using crontab on the Raspberry Pi caused some issues with AirJukeBox.
 New songs can be added in three different ways:
 
 1) Manually putting songs in the `Sounds` directory under `AirJukeBok/AirJukeBoxSite`. Songs need to be in `.mp3`, `.ogg` or `.wav` format.
-2) Downloading songs from Youtube using AirJukeBox's web interface. Converting the video's audio to the `.ogg` format can take a few minutes.
-3) Uploading a songs directly from AirJukeBox's web interface. Songs need to be in `.mp3`, `.ogg` or `.wav` format.
+2) Downloading songs from YouTube using AirJukeBox's web interface. Converting the video's audio to the `.ogg` format can take a few minutes.
+3) Uploading a song directly from AirJukeBox's web interface. Songs need to be in `.mp3`, `.ogg` or `.wav` format.
 
 Note from Pygame's documentation:
 > Be aware that MP3 support is limited. On some systems an unsupported format can crash the program, e.g. Debian Linux. Consider using OGG instead.
