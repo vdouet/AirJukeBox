@@ -108,7 +108,7 @@ AirJukeBox is a simple audio player and the user can access the following functi
 
 ## IX. Automatically start AirJukeBox on startup
 
-Tested on Raspberry Pi:
+Tested on Raspberry Pi.
 
 Open a terminal and copy/paste the following commands:
 
