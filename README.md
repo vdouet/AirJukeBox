@@ -95,7 +95,7 @@ alt="GUI 2" title="GUI 2" width="264" height="250"/>
 
 AirJukeBox is a simple audio player and the user can access the following functionalities using the user interface:
 
-- Play: Play the selected song, it will play all songs in the directory in order and the stop.
+- Play: Play the selected song, it will play all songs in the directory in order and then stop.
 - Stop: Stop the audio player.
 - Loop: Play all songs in the directory and loop back at the end.
 - Random: Play all songs in the directory in random order. Can be combined with "Loop".
